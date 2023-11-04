@@ -1,58 +1,39 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,TextInput,Button } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import Header from './components/header';
 
 export default function App() {
-  const[name, setname] = useState('adnaan')
-  const clickhander = () =>{
-    setname('afnaan');
-    setperson({name:'tamim' , age:'30'});
-  }
-  const[person, setperson] = useState({name:'akram', age:'40'});
+  const [todos ,setTodos] = useState([
+    {text: 'buy a coffe', key:'1'},
+    {text: 'learn react native', key:'2'},
+    {text: 'play on the swith', key: '3'}
+  ]);
   return (
-    <View style={styles.container}>
-      <View style = {styles.header}>
-      <Text style = {styles.boldtext}>Hello {name}!!</Text>
-        <Text>his name is {person.name} and his age is {person.age}</Text>
+      <View style={styles.container}>
+        <Header />
+        <View style = {styles.content}>
+          <View style = {styles.list}>
+            <FlatList
+            data = {todos} 
+            renderItem={({ item }) => (
+              <Text> {item.text}</Text>
+            ) }/>
+          </View>
+        </View>
       </View>
-      <View style ={styles.body}>
-        <Text style = {styles.boldtext}>Enter the age:</Text>
-        <TextInput style = {styles.input}
-        placeholder="Enter text here" />
-      </View>
-      <View style= {styles.btncontainer}>
-        <Button title='submit' onPress={clickhander}/>
-      </View>
-    </View>
-  );
+      );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex:1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  btncontainer:{
-
+  content:{
+    padding:40,
   },
-  header:{
-    backgroundColor: 'pink',
-    padding: 20,
-  },
-  boldtext:{
-    fontWeight: 'bold',
-  },
-  body:{
-    backgroundColor: 'red',
-    padding: 20,
-  },
-  input:{
-    borderWidth: 3,
-    borderColor:'gray',
-    padding:20,
-    margin:10,
-
+  list:{
+    marginTop:20,
   }
 });
