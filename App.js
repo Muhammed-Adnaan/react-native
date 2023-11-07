@@ -6,10 +6,7 @@ import Addtodo from './components/addtodo';
 
 export default function App() {
   const [todos ,setTodos] = useState([
-    {text: 'buy a coffe', key:'1'},
-    {text: 'learn react native', key:'2'},
-    {text: 'play on the swith', key: '3'},
-    {text: 'read daily ', key:'4'}
+    {text: 'Make Your Todo list now (touch to remove) ', key:'1'},
   ]);
   const presshander = (key)=> {
     setTodos(prevTodos=>{
