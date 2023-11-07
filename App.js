@@ -2,13 +2,20 @@ import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from './components/header';
+import TodoItem from './components/todoitem';
 
 export default function App() {
   const [todos ,setTodos] = useState([
     {text: 'buy a coffe', key:'1'},
     {text: 'learn react native', key:'2'},
-    {text: 'play on the swith', key: '3'}
+    {text: 'play on the swith', key: '3'},
+    {text: 'read daily ', key:'4'}
   ]);
+  const presshander = (key)=> {
+    setTodos(prevTodos=>{
+      return prevTodos.filter(todos => todos.key !== key )
+    })
+  }
   return (
       <View style={styles.container}>
         <Header />
@@ -17,7 +24,7 @@ export default function App() {
             <FlatList
             data = {todos} 
             renderItem={({ item }) => (
-              <Text> {item.text}</Text>
+              <TodoItem item ={item} presshander = {presshander}/>
             ) }/>
           </View>
         </View>
