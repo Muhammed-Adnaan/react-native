@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         marginTop: 16,
         borderRadius:10,
         borderWidth:1,
-        bordarStyle:'dashed',
-        bordarColor:'#bbb'
+        borderStyle:'dashed',
+        borderColor:'#bbb'
     }
 });
